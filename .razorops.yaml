@@ -2,11 +2,10 @@ global:
   runner:
     os_image: ubuntu
 
-task1: 
-  unit-tests:
+task: 
+  - unit-tests:
     runner: SravaniBikkina/staticwebsite
-task2:
-   build-static-website:
+  - build-static-website:
     steps:
       - checkout
       - build/website:
