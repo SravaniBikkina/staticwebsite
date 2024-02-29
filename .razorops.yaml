@@ -8,10 +8,6 @@ variables:
   container-name: $web
 
 tasks:
-  - name: unit-tests  # First task
-    steps:
-    # clone git repo
-    - checkout
   - name: deploy-to-azure-storage
     command: 
     - az storage blob upload-batch --account-name razorops --account-key m8WEGw3C72OhMh3BDlDRYB6ScEVrH+kURuAs9tWJ2iZjq2Vw49s5mOmaW6ARhn8hvLtwPiVzaKma+AStx38LHg== --destination $web --source './static website'
