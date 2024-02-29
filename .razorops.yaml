@@ -1,7 +1,8 @@
 version: v2
 global:
   runner:
-    os_image: ubuntutasks:
+    os_image: ubuntu
+  tasks:
   unit-tests: # first task
     steps:
     - checkout  # clone the git repo
