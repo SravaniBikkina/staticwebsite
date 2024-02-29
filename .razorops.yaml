@@ -2,7 +2,8 @@ global:
   runner:
     os_image: ubuntu
 
-tasks: steps:
+tasks: 
+steps:
    - name: Checkout Repository
     push:
     branches:
