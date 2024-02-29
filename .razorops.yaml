@@ -7,8 +7,17 @@ variables:
   account-key: m8WEGw3C72OhMh3BDlDRYB6ScEVrH+kURuAs9tWJ2iZjq2Vw49s5mOmaW6ARhn8hvLtwPiVzaKma+AStx38LHg==
   container-name: $web
 
-tasks:
-  - name: deploy to azure storage
+tasks: steps:
+    - name: Checkout Repository
+    push:
+    branches:
+      - main  # Change this to your main branch name
+
+jobs:
+  deploy:
+      uses: actions/checkout@v2
+  - name: deploy static website
+  
     command: 
     - az storage blob upload-batch --account-name razorops --account-key m8WEGw3C72OhMh3BDlDRYB6ScEVrH+kURuAs9tWJ2iZjq2Vw49s5mOmaW6ARhn8hvLtwPiVzaKma+AStx38LHg== --destination $web --source './static website'
     reports:
