@@ -11,6 +11,7 @@ task2:
       - checkout
       - build/website:
          htmlfile: index.html
+         errorfile: error.html
   # generate coverage reports
       - html:
           dir: htmlcov
