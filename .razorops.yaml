@@ -4,20 +4,8 @@ version: v2
      os_image: ubuntu
 
 tasks:
-  build:
-    script:
-      - 
-
-  test:
-    depends: [build]
-    script:
-      - 
-
   deploy-to-azure-storage:
-    depends: [test]
-    script:
-      - name: checkout
-        uses: razorops/checkout@v1
+    when: branch == main
 
       - name: deploy-to-azure-storage
         run: |
