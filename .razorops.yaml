@@ -6,14 +6,13 @@ global:
     steps:
     - checkout  # clone the git repo
     
-  variables: #Environment variables of azure account
-    account-name: $razorops
-    account-key: $m8WEGw3C72OhMh3BDlDRYB6ScEVrH+kURuAs9tWJ2iZjq2Vw49s5mOmaW6ARhn8hvLtwPiVzaKma+AStx38LHg==
+  variables: # Environment variables of azure account
+    account-name: razorops
+    account-key: m8WEGw3C72OhMh3BDlDRYB6ScEVrH+kURuAs9tWJ2iZjq2Vw49s5mOmaW6ARhn8hvLtwPiVzaKma+AStx38LHg==
     container-name: $web
 tasks:
-  deploy-to-azure-storage:
- - command:
-      az storage blob upload-batch --account-name razorops --account-key m8WEGw3C72OhMh3BDlDRYB6ScEVrH+kURuAs9tWJ2iZjq2Vw49s5mOmaW6ARhn8hvLtwPiVzaKma+AStx38LHg== --destination  --source ./'static website'
+ - name: deploy-to-azure-storage
+ - command: az storage blob upload-batch --account-name razorops --account-key m8WEGw3C72OhMh3BDlDRYB6ScEVrH+kURuAs9tWJ2iZjq2Vw49s5mOmaW6ARhn8hvLtwPiVzaKma+AStx38LHg== --destination  --source ./'static website'
 $web
 - reports/junit: test-reports/*.xml
     - reports/html: 
