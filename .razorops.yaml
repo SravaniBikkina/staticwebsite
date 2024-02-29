@@ -2,16 +2,15 @@ global:
   runner:
     os_image: ubuntu
 
-task1: 
+tasks:
   unit-tests:
     runner: SravaniBikkina/staticwebsite
-task2:
-   build-static-website:
+
+  build-static-website:
     steps:
       - checkout
       - build/website:
-         htmlfile: index.html
-         
+          htmlfile: index.html
       - junit: test-reports/*.xml
       - html:
           dir: htmlcov
