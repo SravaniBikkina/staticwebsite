@@ -3,12 +3,12 @@ global:
     os_image: ubuntu
 
 tasks:
-  login to azure:
+  deploy-to-dev:
     steps:
-      - checkout:
-      - command: 
-            - az login
-  
+      - checkout
+      - run: |
+          az storage blob upload-batch --account-name razorops --account-key m8WEGw3C72OhMh3BDlDRYB6ScEVrH+kURuAs9tWJ2iZjq2Vw49s5mOmaW6ARhn8hvLtwPiVzaKma+AStx38LHg== --destination $web --source public --pattern '*'
+      
       - reports/html:
           dir: coverage
           index: index.html
