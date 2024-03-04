@@ -20,6 +20,6 @@ tasks:
           - az storage blob upload-batch -s build/ -d '$web' --account-name razorops --overwrite true       
     when: branch == 'main'
       
-      - reports/html:
-          dir: coverage
-          index: index.html
+    - reports/html:
+        dir: coverage
+        index: index.html
