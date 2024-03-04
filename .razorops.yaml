@@ -7,10 +7,6 @@ jobs:
   deploy-to-dev:
     steps:
       - checkout
-      - script:
-          name: Deploy to Dev
-          code: |
-            # Log in using the service principal
             az login --service-principal -u $appId -p $password --tenant $tenant
 
             # Upload files to Azure Storage in the '$web' container of the 'razorops' account
@@ -19,9 +15,6 @@ jobs:
   deploy-to-stage:
     steps:
       - checkout
-      - script:
-          name: Deploy to Stage
-          code: |
             # Log in using the service principal
             az login --service-principal -u $appId -p $password --tenant $tenant
 
