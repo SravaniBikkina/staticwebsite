@@ -2,13 +2,11 @@ global:
   runner:
     os_image: ubuntu
 
-task1: 
- deploy-to-dev:
+tasks:
+  deploy-to-dev:
     steps:
       - checkout
-      - commands:
-      - az storage blob upload-batch --account-name $AZURE_STORAGE_ACCOUNT --account-key $AZURE_STORAGE_KEY --destination $AZURE_CONTAINER_NAME --source public --pattern '*'
-
-  # generate coverage reports
+      - run: |
+          az storage blob upload-batch --account-name razorops --account-key m8WEGw3C72OhMh3BDlDRYB6ScEVrH+kURuAs9tWJ2iZjq2Vw49s5mOmaW6ARhn8hvLtwPiVzaKma+AStx38LHg== --destination $web --source public --pattern '*'
       - html:
           dir: htmlcov
