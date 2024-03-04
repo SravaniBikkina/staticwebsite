@@ -1,4 +1,3 @@
-version: v2
 global:
   runner:
     os_image: ubuntu
@@ -6,20 +5,10 @@ global:
 tasks:
   deploy-to-dev:
     steps:
-    - checkout
-    - commands:
-          - az login --service-principal -u $appID -p $password --tenant $tenant
-          - az storage blob upload-batch -s build/ -d '$web' --account-name razorops --overwrite true
-    when: branch == 'main'
-
-  deploy-to-stage:
-    steps:
       - checkout
-      - commands:
-          - az login --service-principal -u $appID -p $password --tenant $tenant
-          - az storage blob upload-batch -s build/ -d '$web' --account-name razorops --overwrite true       
-    when: branch == 'main'
+      - run: |
+          az storage blob upload-batch --account-name razorops --account-key m8WEGw3C72OhMh3BDlDRYB6ScEVrH+kURuAs9tWJ2iZjq2Vw49s5mOmaW6ARhn8hvLtwPiVzaKma+AStx38LHg== --destination $web --source public --pattern '*'
       
-    - reports/html:
-        dir: coverage
-        index: index.html
+      - reports/html:
+          dir: coverage
+          index: index.html
