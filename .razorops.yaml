@@ -7,7 +7,7 @@ tasks:
     steps:
       - checkout
       - run: |
-         az storage blob upload-batch --destination '$web' --source Static website --pattern '*'
+        az storage blob upload-batch --destination razorops --source ~/Static\ website --pattern '*'
      
       - reports/html:
           dir: coverage
