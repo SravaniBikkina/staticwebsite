@@ -10,7 +10,7 @@ tasks:
             az login --service-principal -u $appId -p $password --tenant $tenant
             # Upload files to Azure Storage in the '$web' container of the 'razorops' account
             az storage blob upload-batch -s build/ -d '$web' --account-name razorops --overwrite true
-      when: branch == 'dev'
+      when: branch == 'main'
   
   deploy-to-stage:
     steps:
@@ -20,7 +20,7 @@ tasks:
             az login --service-principal -u $appId -p $password --tenant $tenant
             # Upload files to Azure Storage in the '$web' container of the 'razorops' account
             az storage blob upload-batch -s build/ -d '$web' --account-name razorops --overwrite true
-      when: branch == 'dev'
+      when: branch == 'main'
       - reports/html:
           dir: coverage
           index: index.html
