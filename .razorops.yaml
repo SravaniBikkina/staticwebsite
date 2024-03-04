@@ -3,24 +3,31 @@ global:
   runner:
     os_image: ubuntu
 
+jobs:
   deploy-to-dev:
     steps:
-      - checkout 
-           # Log in using the service principal
-          az login --service-principal -u $appId -p $password --tenant $tenant
+      - checkout
+      - script:
+          name: Deploy to Dev
+          code: |
+            # Log in using the service principal
+            az login --service-principal -u $appId -p $password --tenant $tenant
 
-          # Upload files to Azure Storage in the '$web' container of the 'razorops' account
-          az storage blob upload-batch -s build/ -d '$web' --account-name razorops --overwrite true
+            # Upload files to Azure Storage in the '$web' container of the 'razorops' account
+            az storage blob upload-batch -s build/ -d '$web' --account-name razorops --overwrite true
 
   deploy-to-stage:
     steps:
       - checkout
-          # Log in using the service principal
-          az login --service-principal -u $appId -p $password --tenant $tenant
+      - script:
+          name: Deploy to Stage
+          code: |
+            # Log in using the service principal
+            az login --service-principal -u $appId -p $password --tenant $tenant
 
-          # Upload files to Azure Storage in the '$web' container of the 'razorops' account
-          az storage blob upload-batch -s build/ -d '$web' --account-name razorops --overwrite true
-       
+            # Upload files to Azure Storage in the '$web' container of the 'razorops' account
+            az storage blob upload-batch -s build/ -d '$web' --account-name razorops --overwrite true
+
       - reports/html:
           dir: coverage
           index: index.html
