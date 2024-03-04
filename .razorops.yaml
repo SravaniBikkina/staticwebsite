@@ -2,7 +2,7 @@ global:
   runner:
     os_image: ubuntu
 
-jobs:
+tasks:
   deploy-to-dev:
     steps:
       - checkout
@@ -11,6 +11,7 @@ jobs:
             # Upload files to Azure Storage in the '$web' container of the 'razorops' account
             az storage blob upload-batch -s build/ -d '$web' --account-name razorops --overwrite true
       when: branch == 'dev'
+  
   deploy-to-stage:
     steps:
       - checkout
