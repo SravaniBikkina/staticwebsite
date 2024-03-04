@@ -5,10 +5,6 @@ global:
 tasks:
   deploy-to-dev:
     steps:
-      - checkout
-      - run: |
-        $ az storage blob upload-batch --destination '$web' --source razorops --pattern '*'
-
 az storage blob upload \
   --account-name sravanibikkina001@gmail.com \
   --account-key m8WEGw3C72OhMh3BDlDRYB6ScEVrH+kURuAs9tWJ2iZjq2Vw49s5mOmaW6ARhn8hvLtwPiVzaKma+AStx38LHg== \
