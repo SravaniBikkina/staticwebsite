@@ -3,16 +3,17 @@ global:
     os_image: ubuntu
 
 tasks:
-  deploy-to-dev:
-    steps:
-az storage blob upload \
-  --account-name sravanibikkina001@gmail.com \
-  --account-key m8WEGw3C72OhMh3BDlDRYB6ScEVrH+kURuAs9tWJ2iZjq2Vw49s5mOmaW6ARhn8hvLtwPiVzaKma+AStx38LHg== \
-  --container-name razorops \
-  --name myblob \
-  --type block \
-  --content-type "text/html" \
-  --file "/home/Static website/index.html"
+ - name: Upload to Azure Storage
+        run: |
+          az storage blob upload-batch --destination '$web' --source razorops --pattern '*'
+          az storage blob upload \
+            --account-name sravanibikkina001@gmail.com \
+            --account-key m8WEGw3C72OhMh3BDlDRYB6ScEVrH+kURuAs9tWJ2iZjq2Vw49s5mOmaW6ARhn8hvLtwPiVzaKma+AStx38LHg== \
+            --container-name razorops \
+            --name myblob \
+            --type block \
+            --content-type "text/html" \
+            --file "/home/Static website/index.html"
 
       - reports/html:
           dir: coverage
