@@ -7,8 +7,9 @@ tasks:
     steps:
       - checkout
       - run: |
-           azcopy copy 'C:\myDirectory\*' 'https://razorops.blob.core.windows.net/$web/razorops'
-
+          - az login --service-principal --username APP_ID --password APP_SECRET --tenant TENANT_ID
+          - az storage blob upload --account-name razorops --container-name '$web' --file index.html --auth-mode login
+           
       - reports/html:
           dir: coverage
           index: index.html
