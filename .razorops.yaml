@@ -3,8 +3,8 @@ global:
   runner:
     os_image: ubuntu
 
-task:
-  Build:
+tasks:
+  build:
    steps:
      - checkout
      - commands:
