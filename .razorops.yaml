@@ -7,8 +7,8 @@ tasks:
     steps:
       - checkout
       - run: |
-           - az login
-           - az storage blob upload --account-name razorops --container-name '$web' --file index.html --auth-mode login
+          az login
+          az storage blob upload --account-name razorops --container-name '$web' --file index.html --auth-mode login
            
       - reports/html:
           dir: coverage
