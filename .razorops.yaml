@@ -4,6 +4,7 @@ global:
     os_image: ubuntu
   variables:
     - RACK_ENV=test
+
 - name: test-build
    tasks:
      steps:
