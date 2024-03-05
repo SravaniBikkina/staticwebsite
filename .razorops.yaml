@@ -4,6 +4,11 @@ global:
     os_image: ubuntu
 
 task:
+  Build:
+   steps:
+     - checkout
+     - commands:
+         - python3 -m http.server
   deploy-to-dev:
     steps:
       - checkout
