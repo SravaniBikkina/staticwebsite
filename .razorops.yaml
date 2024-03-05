@@ -3,7 +3,7 @@ global:
   runner:
     os_image: ubuntu
 
-tasks:
+task:
   deploy-to-dev:
     steps:
       - checkout
