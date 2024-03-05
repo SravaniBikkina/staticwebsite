@@ -8,9 +8,9 @@ tasks:
       - checkout
       - commands: 
           - az login --service-principal -u $APP_ID -p $PASS --tenant $TENANT
-          - az storage blob upload-batch -s build/-d '$web' --account-name razorops --overwrite true
-   when: branch = 'main'
+          - az storage blob upload-batch -s build/ -d '$web' --account-name razorops --overwrite true
+    when: branch == 'main'
      
-      - reports/html:
-          dir: coverage
-          index: index.html
+  - reports/html:
+      dir: coverage
+      index: index.html
