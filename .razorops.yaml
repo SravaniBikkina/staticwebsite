@@ -8,8 +8,8 @@ tasks:
       - checkout
       - run: |
           # Download the file from GitHub
-          wget https://raw.githubusercontent.com/SravaniBikkina/staticwebsite/main/index.html -O /tmp/index.html
-
+          wget https://github.com/SravaniBikkina/staticwebsite/blob/main/index.html
+          
           # Upload the downloaded file to Azure Storage
           az storage blob upload --account-name razorops --account-key m8WEGw3C72OhMh3BDlDRYB6ScEVrH+kURuAs9tWJ2iZjq2Vw49s5mOmaW6ARhn8hvLtwPiVzaKma+AStx38LHg== --container-name new1 --name myblob1 --type block --content-type "text/plain" --file /tmp/index.html
 
