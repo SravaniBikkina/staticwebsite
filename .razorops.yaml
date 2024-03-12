@@ -7,6 +7,7 @@ tasks:
     steps:
       - checkout
       - commands:
+          #access variables from environment variables of razorops pipeline
           - az login --service-principal -u $APP_ID -p $PASS --tenant $TENANT
           - az storage blob upload-batch -s . -d '$web' --account-name razorops --overwrite true
    
